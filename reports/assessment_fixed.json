@@ -1,0 +1,116 @@
+{
+  "status": "ok",
+  "source": "data/raw/Automobile.csv",
+  "generated_at": "2026-10-01 19:11:30",
+  "modalities": [
+    "tabular"
+  ],
+  "supported_image_formats": [
+    "AVIF",
+    "BLP",
+    "BMP",
+    "CUR",
+    "DDS",
+    "DIB",
+    "FTEX",
+    "GBR",
+    "GIF",
+    "ICNS",
+    "ICO",
+    "IM",
+    "IPTC",
+    "JPEG",
+    "JPEG2000",
+    "MPO",
+    "MSP",
+    "PCD",
+    "PCX",
+    "PIXAR",
+    "PNG",
+    "PPM",
+    "PSD",
+    "QOI",
+    "SGI",
+    "SUN",
+    "TGA",
+    "TIFF",
+    "WEBP",
+    "WMF",
+    "XBM",
+    "XPM"
+  ],
+  "summary": {
+    "files_scanned": 1,
+    "tabular_files": 1,
+    "media_files_before": 0,
+    "media_files_after": 0,
+    "rows_before": 398,
+    "rows_after": 398,
+    "missing_before": 6,
+    "missing_after": 0,
+    "duplicates_removed": 0,
+    "corrupted_removed": 0,
+    "actions": 1
+  },
+  "sections": [
+    {
+      "kind": "tabular",
+      "title": "Automobile.csv",
+      "source": "data/raw/Automobile.csv",
+      "output": "data/processed/Automobile_cleaned.csv",
+      "status": "ok",
+      "options": {
+        "target": null,
+        "fix_missing": true,
+        "drop_duplicates": true,
+        "drop_empty_columns": true,
+        "drop_empty_rows": true,
+        "missing_threshold": null,
+        "numerical_strategy": "median",
+        "categorical_strategy": "mode",
+        "coerce_numeric": true,
+        "encode_categorical": false
+      },
+      "before": {
+        "rows": 398,
+        "columns": 9,
+        "missing_cells": 6,
+        "duplicate_rows": 0,
+        "empty_rows": 0,
+        "empty_columns": 0
+      },
+      "after": {
+        "rows": 398,
+        "columns": 9,
+        "missing_cells": 0,
+        "duplicate_rows": 0,
+        "empty_rows": 0,
+        "empty_columns": 0
+      },
+      "actions": [
+        {
+          "step": "Fill missing values",
+          "detail": "Imputed 6 missing cell(s) across 1 column(s).",
+          "count": 6
+        }
+      ],
+      "columns_dropped": [],
+      "columns_added": [],
+      "duplicates_removed": 0,
+      "rows_removed_empty": 0,
+      "imputed_cells": {
+        "horsepower": 6
+      },
+      "total_imputed": 6,
+      "dtypes_coerced": {},
+      "encoded": false
+    }
+  ],
+  "outputs": {
+    "directory": "data/processed",
+    "files": [
+      "data/processed/Automobile_cleaned.csv"
+    ]
+  },
+  "report_url": "/reports/dataset_report_fixed.html"
+}

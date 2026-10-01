@@ -1,0 +1,35 @@
+dataset_project/
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── validation/
+│
+├── analysis/
+│   ├── inspect_dataset.py
+│   ├── data_quality.py
+│   ├── statistics.py
+│   ├── visualization.py
+│   ├── duplicate_detection.py
+│   ├── outlier_detection.py
+│   └── label_analysis.py
+│
+├── preprocessing/
+│   ├── clean_data.py
+│   ├── normalize_data.py
+│   ├── encode_data.py
+│   ├── image_preprocessing.py
+│   ├── text_preprocessing.py
+│   ├── audio_preprocessing.py
+│   └── video_preprocessing.py
+│
+├── modeling/
+│   ├── baseline_model.py
+│   ├── model_training.py
+│   ├── evaluation.py
+│   └── error_analysis.py
+│
+├── reports/
+│   └── report_generator.py
+│
+└── main.py

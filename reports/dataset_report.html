@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dataset Assessment | data/raw</title>
+  <link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Universal Dataset Assessment</p>
+        <h1>Know the data before the model.</h1>
+        <p class="lede">A visual snapshot of inventory, quality, distributions, and readiness.</p>
+      </div>
+      <div class="hero-meta"><span id="generated-at"></span><button id="download-json" type="button">Download JSON</button></div>
+    </header>
+
+    <section class="metrics" id="metrics"></section>
+
+    <section class="grid two-column">
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">Inventory</p><h2>What was found</h2></div></div>
+        <div id="inventory-details" class="detail-list"></div>
+        <div class="bar-chart" id="modality-chart"></div>
+      </article>
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">Quality</p><h2>Data health</h2></div></div>
+        <div id="quality-details" class="detail-list"></div>
+        <div class="quality-track"><span id="quality-fill"></span></div>
+        <p class="muted" id="quality-note"></p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading"><div><p class="eyebrow">Statistics</p><h2>Numeric profile</h2></div><span class="muted">Mean, median, spread, and skew</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Feature</th><th>Mean</th><th>Median</th><th>Min</th><th>Max</th><th>Skewness</th></tr></thead><tbody id="statistics-table"></tbody></table></div>
+    </section>
+
+    <section class="grid two-column">
+      <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Risk signals</p><h2>Outliers</h2></div></div><div id="outliers"></div></article>
+      <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Readiness</p><h2>Labels and baseline</h2></div></div><div id="readiness"></div></article>
+    </section>
+
+    <section class="panel" id="prepare-panel">
+      <div class="panel-heading">
+        <div><p class="eyebrow">Prepare</p><h2>Clean &amp; optimize for training</h2></div>
+        <button id="run-clean" type="button">Clean &amp; Optimize Data</button>
+      </div>
+      <div class="clean-options">
+        <label><input type="checkbox" id="opt-remove-duplicates" checked> Remove duplicate rows</label>
+        <label><input type="checkbox" id="opt-fix-missing" checked> Fix missing values</label>
+        <label><input type="checkbox" id="opt-drop-empty" checked> Drop empty rows &amp; columns</label>
+        <label><input type="checkbox" id="opt-encode"> Encode categoricals for training</label>
+        <label><input type="checkbox" id="opt-media" checked> Clean media files (images/audio/video)</label>
+        <label class="opt-target">Target column (optional)<input type="text" id="opt-target" placeholder="e.g. mpg"></label>
+      </div>
+      <div id="clean-status" class="muted">Cleans every modality it finds (tabular, images, audio, video, text) and writes training-ready copies plus a fixed report.</div>
+      <div id="clean-actions"></div>
+    </section>
+
+    <footer>Raw data was preserved. This dashboard is generated from <code>assessment.json</code>.</footer>
+  </main>
+  <script id="assessment-data" type="application/json">{"inventory": {"source_path": "data/raw", "total_files": 1, "total_size_mb": 0.02, "structure_type": "tabular", "detected_modalities": ["tabular"], "modality_counts": {"tabular": 1, "text": 0, "image": 0, "audio": 0, "video": 0}, "file_details": [{"name": "Automobile_cleaned.csv", "path": "data/raw/Automobile_cleaned.csv", "extension": ".csv", "size_mb": 0.0203, "modality": "tabular"}]}, "source_preserved": true, "checks_skipped": ["label audit and baseline model: no target supplied"], "tabular_file": "data/raw/Automobile_cleaned.csv", "statistics": {"numerical_stats": {"mpg": {"mean": 23.514572864321607, "median": 23.0, "std": 7.815984312565782, "min": 9.0, "50%": 23.0, "max": 46.6, "skewness": 0.45706634399491913}, "cylinders": {"mean": 5.454773869346734, "median": 4.0, "std": 1.7010042445332119, "min": 3.0, "50%": 4.0, "max": 8.0, "skewness": 0.5269215453528939}, "displacement": {"mean": 193.42587939698493, "median": 148.5, "std": 104.26983817119591, "min": 68.0, "50%": 148.5, "max": 455.0, "skewness": 0.7196451643005952}, "horsepower": {"mean": 104.30402010050251, "median": 93.5, "std": 38.22262486810867, "min": 46.0, "50%": 93.5, "max": 230.0, "skewness": 1.1062242930872614}, "weight": {"mean": 2970.424623115578, "median": 2803.5, "std": 846.8417741973268, "min": 1613.0, "50%": 2803.5, "max": 5140.0, "skewness": 0.5310625125994629}, "acceleration": {"mean": 15.568090452261307, "median": 15.5, "std": 2.757688929812676, "min": 8.0, "50%": 15.5, "max": 24.8, "skewness": 0.27877684462588986}, "model_year": {"mean": 76.01005025125629, "median": 76.0, "std": 3.697626646732623, "min": 70.0, "50%": 76.0, "max": 82.0, "skewness": 0.01153459401509278}}, "categorical_stats": {"name": {"unique_values": 305, "top_value": "ford pinto", "cardinality_ratio": 0.7663}, "origin": {"unique_values": 3, "top_value": "usa", "cardinality_ratio": 0.0075}}}, "duplicates": {"exact_duplicate_rows": 0, "duplicate_percentage": 0.0}, "outliers": {"mpg": {"count": 1, "percentage": 0.25, "recommendation": "Investigate domain validity before removal"}, "cylinders": {"count": 0, "percentage": 0.0, "recommendation": "Clean"}, "displacement": {"count": 0, "percentage": 0.0, "recommendation": "Clean"}, "horsepower": {"count": 11, "percentage": 2.76, "recommendation": "Investigate domain validity before removal"}, "weight": {"count": 0, "percentage": 0.0, "recommendation": "Clean"}, "acceleration": {"count": 7, "percentage": 1.76, "recommendation": "Investigate domain validity before removal"}, "model_year": {"count": 0, "percentage": 0.0, "recommendation": "Clean"}}, "quality": {"total_rows": 398, "total_columns": 9, "empty_rows": 0, "empty_columns": 0, "missing_counts": {"name": 0, "mpg": 0, "cylinders": 0, "displacement": 0, "horsepower": 0, "weight": 0, "acceleration": 0, "model_year": 0, "origin": 0}, "missing_percentages": {"name": 0.0, "mpg": 0.0, "cylinders": 0.0, "displacement": 0.0, "horsepower": 0.0, "weight": 0.0, "acceleration": 0.0, "model_year": 0.0, "origin": 0.0}, "data_types": {"name": "str", "mpg": "float64", "cylinders": "int64", "displacement": "float64", "horsepower": "float64", "weight": "int64", "acceleration": "float64", "model_year": "int64", "origin": "str"}}, "label_audit": {"status": "not_run", "reason": "pass --target to audit labels"}, "model": {"status": "not_run", "reason": "pass --target to train a baseline"}}</script>
+  <script src="assets/report.js"></script>
+</body>
+</html>
